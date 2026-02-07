@@ -1,0 +1,131 @@
+:root {
+    color-scheme: light;
+    --bg: #f6f2ed;
+    --card: #ffffff;
+    --ink: #1b1b1b;
+    --muted: #6c6b68;
+    --accent: #0f7b6c;
+    --line: #e7e1da;
+    --panel: #fbfaf8;
+    --panel-strong: #f3eee7;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        "Noto Serif SC", "PingFang SC", "Source Han Serif SC", "Songti SC",
+        serif;
+    background: var(--bg);
+    color: var(--ink);
+    width: 360px;
+    min-height: 420px;
+    padding: 16px 18px 20px;
+}
+
+.header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+}
+
+.header p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.stats h2 {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+.hint {
+    margin: -6px 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.stat-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+}
+
+.stat-list div {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px;
+    background: var(--panel);
+}
+
+.stat-list dt {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.stat-list dd {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.preview {
+    margin-top: 16px;
+    background: var(--panel-strong);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid var(--line);
+}
+
+.preview-title {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.preview-text {
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 120px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --bg: #12110f;
+        --card: #12110f;
+        --ink: #f0ede7;
+        --muted: #a49f97;
+        --accent: #56c3b2;
+        --line: #2b2722;
+        --panel: #1c1a17;
+        --panel-strong: #221f1b;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--ink);
+    }
+
+    .stat-list div {
+        border-color: var(--line);
+    }
+
+    .preview {
+        border-color: var(--line);
+    }
+}

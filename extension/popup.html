@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>字数统计</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <main>
+            <header class="header">
+                <h1>字数统计</h1>
+                <p id="subtitle">选中文字后右键统计</p>
+            </header>
+
+            <section id="stats" class="stats">
+                <h2>统计信息</h2>
+                <p id="hint" class="hint">未选中文字，以下为 0。</p>
+                <dl class="stat-list">
+                    <div>
+                        <dt>字符数(不计空格)</dt>
+                        <dd id="charsNoSpace">0</dd>
+                    </div>
+                    <div>
+                        <dt>字符数(计空格)</dt>
+                        <dd id="charsWithSpace">0</dd>
+                    </div>
+                    <div>
+                        <dt>英文字符数</dt>
+                        <dd id="latinChars">0</dd>
+                    </div>
+                    <div>
+                        <dt>数字数</dt>
+                        <dd id="digitCount">0</dd>
+                    </div>
+                    <div>
+                        <dt>标点数</dt>
+                        <dd id="punctCount">0</dd>
+                    </div>
+                    <div>
+                        <dt>非中文单词</dt>
+                        <dd id="nonChineseWords">0</dd>
+                    </div>
+                    <div>
+                        <dt>中文字符</dt>
+                        <dd id="hanChars">0</dd>
+                    </div>
+                </dl>
+                <div class="preview">
+                    <div class="preview-title">选中文本</div>
+                    <div id="previewText" class="preview-text"></div>
+                </div>
+            </section>
+        </main>
+
+    <script src="shared.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

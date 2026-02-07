@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Count It 字数统计",
+    "version": "0.1.0",
+    "description": "选中文本后右键统计字数，并在扩展图标弹出统计信息。",
+    "permissions": ["contextMenus", "activeTab", "tabs", "scripting"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "字数统计",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "icons/icon-16.png",
+        "32": "icons/icon-32.png",
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
