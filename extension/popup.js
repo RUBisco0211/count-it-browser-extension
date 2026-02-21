@@ -39,60 +39,13 @@ function render(stats) {
     elements.subtitle.textContent = "选中文字后右键统计";
 }
 
-function getActiveTab() {
-    return new Promise((resolve) => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            resolve(tabs && tabs.length ? tabs[0] : null);
-        });
-    });
-}
-
-function getSelectionFromTab(tabId) {
-    return new Promise((resolve) => {
-        if (!tabId) {
-            resolve("");
-            return;
-        }
-        getSelectionFromTabMessage(tabId).then((messageText) => {
-            if (messageText) {
-                resolve(messageText);
-                return;
-            }
-            chrome.scripting.executeScript(
-                {
-                    target: { tabId },
-                    func: () => {
-                        const sel = window.getSelection();
-                        return sel ? sel.toString() : "";
-                    },
-                },
-                (results) => {
-                    if (chrome.runtime.lastError || !results || !results.length) {
-                        resolve("");
-                        return;
-                    }
-                    resolve(results[0].result || "");
-                },
-            );
-        });
-    });
-}
-
 async function loadStats() {
     const response = await new Promise((resolve) => {
-        chrome.runtime.sendMessage({ type: "POPUP_GET_STATS" }, (res) =>
+        chrome.runtime.sendMessage({ type: "POPUP_GET_OR_COMPUTE_STATS" }, (res) =>
             resolve(res),
         );
     });
-
-    if (response && response.stats && response.stats.text) {
-        render(response.stats);
-        return;
-    }
-
-    const tab = await getActiveTab();
-    const selection = await getSelectionFromTab(tab ? tab.id : null);
-    render(computeStats(selection));
+    render((response && response.stats) || computeStats(""));
 }
 
 loadStats();

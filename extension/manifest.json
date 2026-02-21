@@ -11,6 +11,15 @@
         "default_title": "字数统计",
         "default_popup": "popup.html"
     },
+    "commands": {
+        "open-count-popup": {
+            "suggested_key": {
+                "default": "Alt+Shift+C",
+                "mac": "Option+Shift+C"
+            },
+            "description": "打开字数统计窗口"
+        }
+    },
     "icons": {
         "16": "icons/icon-16.png",
         "32": "icons/icon-32.png",
